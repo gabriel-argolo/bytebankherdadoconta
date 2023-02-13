@@ -13,4 +13,10 @@ public class ContaEspecial extends Conta {
 		super.saldo += valor;
 	}
 
+	@Override
+	public int compareTo(Conta outra) {
+		// TODO Auto-generated method stub
+		return Double.compare(this.saldo, saldo);
+	}
+
 }

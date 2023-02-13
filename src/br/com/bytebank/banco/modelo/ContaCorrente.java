@@ -27,4 +27,9 @@ public class ContaCorrente extends Conta implements Tributavel {
 	public String toString() {
 		return "ContaCorrente, " + super.toString();
 	}
+
+	@Override
+	public int compareTo(Conta outra) {
+	return Double.compare(this.saldo, outra.saldo);
+	}
 }

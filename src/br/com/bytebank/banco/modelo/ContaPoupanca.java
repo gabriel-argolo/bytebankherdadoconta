@@ -15,4 +15,10 @@ public class ContaPoupanca extends Conta {
 	public String toString() {
 		return "ContaPoupanca, " + super.toString();
 	}
+
+	@Override
+	public int compareTo(Conta outra) {
+		// TODO Auto-generated method stub
+		return Double.compare(this.saldo, outra.saldo);
+	}
 }

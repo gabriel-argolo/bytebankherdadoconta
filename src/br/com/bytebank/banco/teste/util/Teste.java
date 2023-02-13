@@ -13,7 +13,7 @@ import br.com.bytebank.banco.modelo.Conta;
 import br.com.bytebank.banco.modelo.ContaCorrente;
 import br.com.bytebank.banco.modelo.ContaPoupanca;
 
-public class TesteSortArraysString {
+public class Teste {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -40,43 +40,52 @@ public class TesteSortArraysString {
 		clienteCC4.setNome("Ana");
 		cc4.setTitular(clienteCC4);
 		cc4.deposita(222.0);
-		
+
 		List<Conta> lista = new ArrayList<>();
 		lista.add(cc1);
 		lista.add(cc2);
 		lista.add(cc3);
 		lista.add(cc4);
 
-	
-		class TitularDaContaComparator implements Comparator<Conta>{
-			@Override
-			public int compare(Conta c1, Conta c2) {
-				// TODO Auto-generated method stub
-				return c1.getTitular().getNome().compareTo(c2.getTitular().getNome());
-			}
-			
-		}
-		TitularDaContaComparator comparator = new TitularDaContaComparator();
-		lista.sort(comparator);
-		
-		for (Conta conta : lista) {
-		System.out.println(conta);	
-		}
-		
-		System.out.println("------------------------");
-		Collections.sort(lista, new TitularDaContaComparator());
-		for (Conta conta : lista) {
-			System.out.println(conta);	
-			}
-		System.out.println("------------------------");
-		Collections.sort(lista);
-		for (Conta conta : lista) {
-			System.out.println(conta);
-		}
-		System.out.println("------------------------");
-		lista.sort(null);
-		for (Conta conta : lista) {
-			System.out.println(conta);
-		}
+		Comparator<Conta> comp = (Conta c1, Conta c2) -> {
+			String nomeC1 = c1.getTitular().getNome();
+			String nomeC2 = c2.getTitular().getNome();
+			return nomeC1.compareTo(nomeC2);
+		};
+
+		lista.forEach((Conta) ->System.out.println(Conta));
+		System.out.println("+++++++++++++++++++++");
+
+		lista.sort( (c1, c2) -> Integer.compare(c1.getNumero(), c2.getNumero()) );
+		lista.forEach((Conta) ->System.out.println(Conta));
 	}
+
+	//		Comparator<Conta> comp = new Comparator<Conta>() {
+	//
+	//			@Override
+	//			public int compare(Conta c1, Conta c2) {
+	//				// TODO Auto-generated method stub
+	//				String nomeC1 = c1.getTitular().getNome();
+	//				String nomeC2 = c2.getTitular().getNome();
+	//
+	//				return nomeC1.compareTo(nomeC2);
+	//			}
+	//		};
+	//	for (Conta conta : lista) {
+	//		System.out.println(conta);
+	//	}
+	//	System.out.println("+++++++++++++++++++++");
+	//
+	//		lista.sort(new Comparator<Conta>(){
+	//			@Override
+	//			public int compare(Conta c1, Conta c2) {
+	//				// TODO Auto-generated method stub
+	//				return Integer.compare(c1.getNumero(), c2.getNumero());
+	//			}
+	//		});
+	//		for (Conta conta : lista) {
+	//			System.out.println(conta);
+	//		}
 }
+
+
